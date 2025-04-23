@@ -4,8 +4,6 @@
     "description": "",
     "keywords": [],
     "priority": 0,
-    "providers": [
-        "Modules\\DMS\\Providers\\DMSServiceProvider"
-    ],
+    "providers": ["Modules\\DMS\\Providers\\DMSServiceProvider"],
     "files": []
 }
