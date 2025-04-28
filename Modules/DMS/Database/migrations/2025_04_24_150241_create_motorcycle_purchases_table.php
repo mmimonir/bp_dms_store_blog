@@ -27,7 +27,7 @@ return new class extends Migration
 
             // Foreign Keys
             $table->foreign('vendor_id')
-                ->references('id')->on('vendors')
+                ->references('id')->on('motorcycle_vendors_and_dealers')
                 ->onDelete('cascade');
 
             $table->foreign('created_by')

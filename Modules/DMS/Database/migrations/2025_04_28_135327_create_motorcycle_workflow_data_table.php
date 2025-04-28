@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('ckd_process', 255);
             $table->string('approval_no', 100)->nullable();
             $table->string('invoice_no', 100)->nullable();
-            $table->decimal('purchage_price', 15, 2);
+            $table->decimal('purchase_price', 15, 2);
             $table->enum('whos_vat', ['dealer', 'customer']);
             $table->string('vat_process', 255)->nullable();
             $table->date('tr_dep_date')->nullable();
