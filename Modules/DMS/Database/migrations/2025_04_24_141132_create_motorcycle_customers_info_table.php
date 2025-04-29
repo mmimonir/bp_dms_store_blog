@@ -26,18 +26,11 @@ return new class extends Migration
             $table->string('secondary_phone', 20)->nullable();
             $table->string('nationality', 100);
             $table->enum('gender', ['male', 'female', 'other']);
-            $table->unsignedBigInteger('created_by');
-            $table->unsignedBigInteger('edited_by')->nullable();
             $table->timestamps();
 
             // Foreign Keys
-            $table->foreign('created_by')
-                ->references('id')->on('users')
-                ->onDelete('set null');
-
-            $table->foreign('edited_by')
-                ->references('id')->on('users')
-                ->onDelete('set null');
+            $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('edited_by')->nullable()->constrained('users')->nullOnDelete();
         });
     }
 

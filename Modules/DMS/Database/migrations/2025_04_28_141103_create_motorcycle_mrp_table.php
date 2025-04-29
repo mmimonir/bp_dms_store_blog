@@ -17,7 +17,7 @@ return new class extends Migration
             $table->decimal('mrp', 15, 2);
             $table->decimal('commission', 15, 2);
             $table->enum('status', ['active', 'inactive']);
-            $table->foreignId('created_by')->constrained('users');
+            $table->foreignId('created_by')->nullable()->constrained('users');
             $table->foreignId('edited_by')->nullable()->constrained('users');
             $table->timestamps();
         });

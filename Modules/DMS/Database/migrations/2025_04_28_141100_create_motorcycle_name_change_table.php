@@ -18,7 +18,7 @@ return new class extends Migration
             $table->decimal('fee', 15, 2);
             $table->date('change_date');
             $table->string('reference', 255)->nullable();
-            $table->foreignId('created_by')->constrained('users');
+            $table->foreignId('created_by')->nullable()->constrained('users');
             $table->foreignId('edited_by')->nullable()->constrained('users');
             $table->timestamps();
         });

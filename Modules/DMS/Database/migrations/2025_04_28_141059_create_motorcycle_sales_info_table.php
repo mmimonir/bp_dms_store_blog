@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('sale_mushak_no', 100)->nullable();
             $table->decimal('sale_profit', 15, 2)->nullable();
             $table->enum('dms_status', ['pending', 'approved', 'delivered', 'rejected']);
-            $table->foreignId('created_by')->constrained('users');
+            $table->foreignId('created_by')->nullable()->constrained('users');
             $table->foreignId('edited_by')->nullable()->constrained('users');
             $table->timestamps();
         });

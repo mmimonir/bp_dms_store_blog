@@ -31,7 +31,7 @@ return new class extends Migration
             $table->integer('rpm');
             $table->integer('seats_inc_driver');
             $table->enum('status', ['active', 'inactive']);
-            $table->foreignId('created_by')->constrained('users');
+            $table->foreignId('created_by')->nullable()->constrained('users');
             $table->foreignId('edited_by')->nullable()->constrained('users');
             $table->timestamps();
         });

@@ -20,6 +20,8 @@ return new class extends Migration
             $table->date('entry_date');
             $table->string('reference_no', 100);
             $table->text('remarks')->nullable();
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('edited_by')->nullable()->constrained('users');
             $table->timestamps();
         });
     }

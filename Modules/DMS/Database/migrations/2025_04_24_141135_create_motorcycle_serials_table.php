@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('motorcycle_serials', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('motorcycle_purchase_id');
-            $table->unsignedBigInteger('motorcycle_customer_info_id');
             $table->string('model_code', 50);
             $table->string('gate_pass', 100)->nullable();
             $table->string('chassis_first_twelve_digit', 12);
@@ -25,28 +23,13 @@ return new class extends Migration
             $table->boolean('in_stock')->default(true);
             $table->year('year_of_manufacture')->nullable();
             $table->string('mc_location', 100)->nullable();
-            $table->unsignedBigInteger('created_by')->nullable();
-            $table->unsignedBigInteger('edited_by')->nullable();
             $table->timestamps();
 
             // Foreign Keys
-            $table->foreign('motorcycle_purchase_id')
-                ->references('id')->on('motorcycle_purchases')
-                ->onDelete('cascade');
-
-            $table->foreign('motorcycle_customer_info_id')
-                ->references('id')->on('motorcycle_customer_infos')
-                ->onDelete('cascade');
-
-            // Optionally, you can define foreign keys for created_by and edited_by
-            // assuming you have a 'users' table
-            $table->foreign('created_by')
-                ->references('id')->on('users')
-                ->onDelete('set null');
-
-            $table->foreign('edited_by')
-                ->references('id')->on('users')
-                ->onDelete('set null');
+            $table->foreignId('motorcycle_purchase_id')->constrained('motorcycle_purchases')->cascadeOnDelete();
+            $table->foreignId('motorcycle_customer_info_id')->constrained('motorcycle_customer_infos')->cascadeOnDelete();
+            $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('edited_by')->nullable()->constrained('users')->nullOnDelete();
         });
     }
 

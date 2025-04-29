@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('hs_code', 50)->nullable();
             $table->foreignId('motorcycle_dealer_id')->constrained('motorcycle_vendors_and_dealers')->cascadeOnDelete();
             $table->date('date_of_first_supply')->nullable();
-            $table->foreignId('created_by')->constrained('users');
+            $table->foreignId('created_by')->nullable()->constrained('users');
             $table->foreignId('edited_by')->nullable()->constrained('users');
             $table->timestamps();
         });

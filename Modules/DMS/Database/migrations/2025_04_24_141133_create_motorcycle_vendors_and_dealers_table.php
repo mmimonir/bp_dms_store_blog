@@ -21,18 +21,11 @@ return new class extends Migration
             $table->string('bin_no', 100)->nullable();
             $table->string('tin_no', 100)->nullable();
             $table->string('trade_licence_no', 100)->nullable();
-            $table->unsignedBigInteger('created_by');
-            $table->unsignedBigInteger('edited_by')->nullable();
             $table->timestamps();
 
             // Foreign Keys
-            $table->foreign('created_by')
-                ->references('id')->on('users')
-                ->onDelete('set null');
-
-            $table->foreign('edited_by')
-                ->references('id')->on('users')
-                ->onDelete('set null');
+            $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('edited_by')->nullable()->constrained('users')->nullOnDelete();
         });
     }
 

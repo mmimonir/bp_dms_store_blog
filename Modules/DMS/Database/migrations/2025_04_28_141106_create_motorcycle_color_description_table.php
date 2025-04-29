@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('model_code', 100);
             $table->string('color_description', 255);
-            $table->foreignId('created_by')->constrained('users');
+            $table->foreignId('created_by')->nullable()->constrained('users');
             $table->foreignId('edited_by')->nullable()->constrained('users');
             $table->timestamps();
         });

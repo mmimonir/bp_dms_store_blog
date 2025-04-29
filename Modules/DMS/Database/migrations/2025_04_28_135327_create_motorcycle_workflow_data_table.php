@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('motorcycle_workflow_data', function (Blueprint $table) {
-            $table->id(); // BIGINT Primary Key
+            $table->id(); // BIGINT Primary Key           
 
-            // Foreign Keys
+            // Foreign Key Fields with the desired format
             $table->foreignId('motorcycle_serials_id')->constrained('motorcycle_serials')->cascadeOnDelete();
-            $table->foreignId('challans_and_receipts_id')->constrained('challans_and_receipts')->cascadeOnDelete();
+            $table->foreignId('challans_and_receipts_id')->constrained('motorcycle_challans_and_receipts')->cascadeOnDelete();
             $table->foreignId('motorcycle_color_id')->constrained('motorcycle_colors')->cascadeOnDelete();
             $table->foreignId('motorcycle_color_description_id')->constrained('motorcycle_color_descriptions')->cascadeOnDelete();
 
@@ -39,8 +39,8 @@ return new class extends Migration
             $table->date('tr_deposite_date')->nullable();
 
             // Audit Fields
-            $table->foreignId('created_by')->constrained('users');
-            $table->foreignId('edited_by')->nullable()->constrained('users');
+            $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('edited_by')->nullable()->constrained('users')->nullOnDelete();
 
             // Timestamps
             $table->timestamps();
