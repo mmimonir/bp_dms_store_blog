@@ -14,12 +14,6 @@ return new class extends Migration
         Schema::create('motorcycle_workflow_data', function (Blueprint $table) {
             $table->id(); // BIGINT Primary Key           
 
-            // Foreign Key Fields with the desired format
-            $table->foreignId('motorcycle_serials_id')->constrained('motorcycle_serials')->cascadeOnDelete();
-            $table->foreignId('challans_and_receipts_id')->constrained('motorcycle_challans_and_receipts')->cascadeOnDelete();
-            $table->foreignId('motorcycle_color_id')->constrained('motorcycle_colors')->cascadeOnDelete();
-            $table->foreignId('motorcycle_color_description_id')->constrained('motorcycle_color_descriptions')->cascadeOnDelete();
-
             // Other Fields
             $table->string('ckd_process', 255);
             $table->string('approval_no', 100)->nullable();
@@ -37,6 +31,12 @@ return new class extends Migration
             $table->string('tr_month_code', 10)->nullable();
             $table->string('tr_number', 50)->nullable();
             $table->date('tr_deposite_date')->nullable();
+
+            // Foreign Key Fields with the desired format
+            $table->foreignId('motorcycle_serials_id')->constrained('motorcycle_serials')->cascadeOnDelete();
+            $table->foreignId('challans_and_receipts_id')->constrained('motorcycle_challans_and_receipts')->cascadeOnDelete();
+            $table->foreignId('motorcycle_color_id')->constrained('motorcycle_colors')->cascadeOnDelete();
+            $table->foreignId('motorcycle_color_description_id')->constrained('motorcycle_color_descriptions')->cascadeOnDelete();
 
             // Audit Fields
             $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();

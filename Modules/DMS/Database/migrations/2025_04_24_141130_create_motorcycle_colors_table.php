@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('motorcycle_color', function (Blueprint $table) {
+        Schema::create('motorcycle_colors', function (Blueprint $table) {
             $table->id();
             $table->string('color_code', 50);
             $table->string('color', 100);

@@ -27,7 +27,7 @@ return new class extends Migration
 
             // Foreign Keys
             $table->foreignId('motorcycle_purchase_id')->constrained('motorcycle_purchases')->cascadeOnDelete();
-            $table->foreignId('motorcycle_customer_info_id')->constrained('motorcycle_customer_infos')->cascadeOnDelete();
+            $table->foreignId('motorcycle_customer_info_id')->constrained('motorcycle_customers_info')->cascadeOnDelete();
             $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
             $table->foreignId('edited_by')->nullable()->constrained('users')->nullOnDelete();
         });
