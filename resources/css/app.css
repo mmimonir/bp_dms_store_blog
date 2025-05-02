@@ -1,6 +1,5 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
+/* @import "tailwindcss";
+@source "../views"; */
 
 /* Import Bootstrap Icons CSS */
 @import "bootstrap-icons/font/bootstrap-icons.css";
