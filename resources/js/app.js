@@ -6,4 +6,5 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
+import "bootstrap";
 import "admin-lte";
