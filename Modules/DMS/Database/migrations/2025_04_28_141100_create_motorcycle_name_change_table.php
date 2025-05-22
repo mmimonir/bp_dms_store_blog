@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('motorcycle_customer_info_id')->constrained('motorcycle_customers_info')->cascadeOnDelete();
             $table->foreignId('motorcycle_serials_id')->constrained('motorcycle_serials')->cascadeOnDelete();
-            $table->decimal('fee', 15, 2);
+            $table->decimal('fee', 15, 0);
             $table->date('change_date');
             $table->string('reference', 255)->nullable();
-            $table->foreignId('created_by')->nullable()->constrained('users');
-            $table->foreignId('edited_by')->nullable()->constrained('users');
+            $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
+            $table->foreignId('edited_by')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();
         });
     }

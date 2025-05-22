@@ -16,12 +16,12 @@ return new class extends Migration
             $table->foreignId('motorcycle_customer_info_id')->constrained('motorcycle_customers_info')->cascadeOnDelete();
             $table->enum('entry_type', ['purchase', 'registration', 'service', 'other']);
             $table->string('due_type', 100);
-            $table->decimal('amount', 15, 2);
+            $table->decimal('amount', 15, 0);
             $table->date('entry_date');
             $table->string('reference_no', 100);
             $table->text('remarks')->nullable();
-            $table->foreignId('created_by')->nullable()->constrained('users');
-            $table->foreignId('edited_by')->nullable()->constrained('users');
+            $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
+            $table->foreignId('edited_by')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();
         });
     }

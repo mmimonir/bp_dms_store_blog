@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('motorcycle_mrp', function (Blueprint $table) {
             $table->id();
             $table->string('model_code', 100);
-            $table->decimal('mrp', 15, 2);
-            $table->decimal('commission', 15, 2);
+            $table->decimal('mrp', 15, 0);
+            $table->decimal('commission', 15, 0);
             $table->enum('status', ['active', 'inactive']);
-            $table->foreignId('created_by')->nullable()->constrained('users');
-            $table->foreignId('edited_by')->nullable()->constrained('users');
+            $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
+            $table->foreignId('edited_by')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();
         });
     }

@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('motorcycle_registrations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('rg_duration');
-            $table->decimal('rg_amount', 10, 2);
+            $table->decimal('rg_amount', 10, 0);
             $table->string('rg_number', 50)->nullable();
-            $table->decimal('brta_fee', 10, 2);
-            $table->decimal('profit_amount', 10, 2);
-            $table->decimal('due_amount', 10, 2)->default(0);
+            $table->decimal('brta_fee', 10, 0);
+            $table->decimal('profit_amount', 10, 0);
+            $table->decimal('due_amount', 10, 0)->default(0);
             $table->date('brta_fee_deposite_date')->nullable();
             $table->text('brta_transaction_note')->nullable();
             $table->timestamps();
