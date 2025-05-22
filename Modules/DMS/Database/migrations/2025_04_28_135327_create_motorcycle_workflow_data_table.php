@@ -34,9 +34,9 @@ return new class extends Migration
 
             // Foreign Key Fields with the desired format
             $table->foreignId('motorcycle_serials_id')->constrained('motorcycle_serials')->cascadeOnDelete();
-            $table->foreignId('challans_and_receipts_id')->constrained('motorcycle_challans_and_receipts')->cascadeOnDelete();
-            $table->foreignId('motorcycle_color_id')->constrained('motorcycle_colors')->cascadeOnDelete();
-            $table->foreignId('motorcycle_color_description_id')->constrained('motorcycle_color_descriptions')->cascadeOnDelete();
+            $table->foreignId('challans_and_receipts_id')->nullable()->constrained('motorcycle_challans_and_receipts')->cascadeOnDelete();
+            $table->foreignId('motorcycle_color_id')->nullable()->constrained('motorcycle_colors')->cascadeOnDelete();
+            $table->foreignId('motorcycle_color_description_id')->nullable()->constrained('motorcycle_color_descriptions')->cascadeOnDelete();
 
             // Audit Fields
             $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
