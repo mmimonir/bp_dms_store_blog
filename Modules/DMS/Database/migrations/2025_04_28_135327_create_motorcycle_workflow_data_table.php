@@ -15,31 +15,30 @@ return new class extends Migration
             $table->id(); // BIGINT Primary Key           
 
             // Other Fields
-            $table->string('ckd_process', 255);
+            $table->string('ckd_process', 255)->default('PENDING');
             $table->string('approval_no', 100)->nullable();
             $table->string('invoice_no', 100)->nullable();
-            $table->decimal('purchase_price', 15, 2);
-            $table->enum('whos_vat', ['dealer', 'customer']);
-            $table->string('vat_process', 255)->nullable();
-            $table->date('tr_dep_date')->nullable();
+            $table->decimal('purchase_price', 15, 0);
+            $table->string('whos_vat', 50)->nullable();
+            $table->string('vat_process', 255)->default('PENDING');
             $table->string('register_no', 50)->nullable();
-            $table->string('page_no', 50);
+            $table->string('page_no', 50)->nullable();
             $table->string('vat_purchage_sl', 100)->nullable();
             $table->string('vat_sale_sl', 100)->nullable();
             $table->string('evl_invoice_no', 100)->nullable();
-            $table->enum('file_status', ['pending', 'approved', 'rejected', 'archived']);
+            $table->string('file_status', 50);
             $table->string('tr_month_code', 10)->nullable();
             $table->string('tr_number', 50)->nullable();
             $table->date('tr_deposite_date')->nullable();
 
             // Foreign Key Fields with the desired format
             $table->foreignId('motorcycle_serials_id')->constrained('motorcycle_serials')->cascadeOnDelete();
-            $table->foreignId('challans_and_receipts_id')->nullable()->constrained('motorcycle_challans_and_receipts')->cascadeOnDelete();
-            $table->foreignId('motorcycle_color_id')->nullable()->constrained('motorcycle_colors')->cascadeOnDelete();
-            $table->foreignId('motorcycle_color_description_id')->nullable()->constrained('motorcycle_color_descriptions')->cascadeOnDelete();
+            $table->foreignId('challans_and_receipts_id')->nullable()->constrained('motorcycle_challans_and_receipts')->nullOnDelete();
+            $table->foreignId('motorcycle_color_id')->nullable()->constrained('motorcycle_colors')->nullOnDelete();
+            $table->foreignId('motorcycle_color_description_id')->nullable()->constrained('motorcycle_color_descriptions')->nullOnDelete();
 
             // Audit Fields
-            $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
             $table->foreignId('edited_by')->nullable()->constrained('users')->nullOnDelete();
 
             // Timestamps

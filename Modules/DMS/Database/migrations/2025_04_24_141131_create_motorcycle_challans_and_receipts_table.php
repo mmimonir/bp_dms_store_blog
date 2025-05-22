@@ -16,8 +16,8 @@ return new class extends Migration
             $table->enum('document_type', ['challan', 'receipt']);
             $table->string('document_no', 100);
             $table->date('date');
-            $table->foreignId('created_by')->nullable()->constrained('users');
-            $table->foreignId('edited_by')->nullable()->constrained('users');
+            $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
+            $table->foreignId('edited_by')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();
         });
     }

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->integer('rg_duration');
             $table->decimal('rg_amount', 10, 2);
-            $table->string('rg_number', 50);
+            $table->string('rg_number', 50)->nullable();
             $table->decimal('brta_fee', 10, 2);
             $table->decimal('profit_amount', 10, 2);
             $table->decimal('due_amount', 10, 2)->default(0);
@@ -26,7 +26,7 @@ return new class extends Migration
             // Foreign Keys
             $table->foreignId('motorcycle_serials_id')->constrained('motorcycle_serials')->cascadeOnDelete();
             $table->foreignId('motorcycle_customers_info_id')->constrained('motorcycle_customers_info')->cascadeOnDelete();
-            $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
             $table->foreignId('edited_by')->nullable()->constrained('users')->nullOnDelete();
         });
     }

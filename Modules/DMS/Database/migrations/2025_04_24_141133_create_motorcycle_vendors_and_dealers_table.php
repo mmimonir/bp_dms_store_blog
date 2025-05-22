@@ -24,7 +24,7 @@ return new class extends Migration
             $table->timestamps();
 
             // Foreign Keys
-            $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
             $table->foreignId('edited_by')->nullable()->constrained('users')->nullOnDelete();
         });
     }

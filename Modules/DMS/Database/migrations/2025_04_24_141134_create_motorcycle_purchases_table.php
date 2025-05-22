@@ -14,17 +14,18 @@ return new class extends Migration
         Schema::create('motorcycle_purchases', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('factory_challan_no', 50)->nullable();
-            $table->date('purchage_date')->nullable();
+            $table->date('purchage_date');
             $table->decimal('total_purchage_amount', 12, 2)->default(0);
             $table->string('uml_mushak_no', 50)->nullable();
             $table->date('uml_mushak_date')->nullable();
             $table->string('dealer_code', 20)->nullable();
             $table->date('rebate_date')->nullable();
+            $table->unsignedInteger('quantity');
             $table->timestamps();
 
             // Foreign Keys           
             $table->foreignId('vendor_id')->constrained('motorcycle_vendors_and_dealers')->cascadeOnDelete();
-            $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
             $table->foreignId('edited_by')->nullable()->constrained('users')->nullOnDelete();
         });
     }

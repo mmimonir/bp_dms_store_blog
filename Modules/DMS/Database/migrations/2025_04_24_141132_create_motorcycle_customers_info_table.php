@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('relation', 50)->nullable();
             $table->string('father_name', 255)->nullable();
             $table->string('mother_name', 255)->nullable();
-            $table->text('address_one')->nullable();
+            $table->text('address_one');
             $table->text('address_two')->nullable();
-            $table->date('date_of_birth');
+            $table->date('date_of_birth')->nullable();
             $table->string('national_id_no', 50)->nullable();
             $table->string('email', 255)->nullable();
             $table->string('phone', 20);
@@ -29,7 +29,7 @@ return new class extends Migration
             $table->timestamps();
 
             // Foreign Keys
-            $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
             $table->foreignId('edited_by')->nullable()->constrained('users')->nullOnDelete();
         });
     }
