@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('sale_date');
             $table->decimal('sale_price', 15, 0);
             $table->decimal('sale_price_vat', 15, 0);
-            $table->string('sale_mushak_no', 100)->nullable();
+            $table->string('sale_mushak_no', 10)->nullable();
             $table->decimal('sale_profit', 15, 0)->nullable();
             $table->string('dms_status', 50)->default('PENDING');
             $table->foreignId('created_by')->constrained('users')->onDelete('cascade');

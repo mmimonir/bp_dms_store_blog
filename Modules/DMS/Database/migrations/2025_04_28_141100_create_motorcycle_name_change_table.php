@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('motorcycle_serials_id')->constrained('motorcycle_serials')->cascadeOnDelete();
             $table->decimal('fee', 15, 0);
             $table->date('change_date');
-            $table->string('reference', 255)->nullable();
+            $table->string('reference', 100)->nullable();
             $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
             $table->foreignId('edited_by')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();

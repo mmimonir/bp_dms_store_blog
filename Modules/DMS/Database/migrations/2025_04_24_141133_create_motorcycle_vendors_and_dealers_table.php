@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('motorcycle_vendors_and_dealers', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->enum('type', ['vendor', 'dealer']);
             $table->string('name', 255);
             $table->text('address')->nullable();

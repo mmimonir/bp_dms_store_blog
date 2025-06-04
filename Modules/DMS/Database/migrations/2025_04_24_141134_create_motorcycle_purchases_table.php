@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('motorcycle_purchases', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('factory_challan_no', 50)->nullable();
             $table->date('purchage_date');
             $table->decimal('total_purchage_amount', 12, 2)->default(0);

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('motorcycle_vat_price_declare', function (Blueprint $table) {
             $table->id();
             $table->foreignId('motorcycle_purchases_id')->constrained('motorcycle_purchases')->cascadeOnDelete();
-            $table->string('model_code', 100);
+            $table->string('model_code', 10);
             $table->decimal('value_addition_amount', 15, 0);
             $table->date('submit_date');
             $table->string('hs_code', 50)->nullable();

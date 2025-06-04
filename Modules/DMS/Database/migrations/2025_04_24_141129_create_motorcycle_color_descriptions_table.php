@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('motorcycle_color_descriptions', function (Blueprint $table) {
             $table->id();
-            $table->string('model_code', 100);
-            $table->string('color_description', 255);
+            $table->string('model_code', 10);
+            $table->string('color_description_code', 10);
+            $table->string('color_description', 10);
             $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
             $table->foreignId('edited_by')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('motorcycle_colors', function (Blueprint $table) {
             $table->id();
-            $table->string('color_code', 50);
-            $table->string('color', 100);
+            $table->string('color_code', 10);
+            $table->string('color', 50);
             $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
             $table->foreignId('edited_by')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();

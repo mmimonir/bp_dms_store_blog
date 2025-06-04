@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('motorcycle_mrp', function (Blueprint $table) {
             $table->id();
-            $table->string('model_code', 100);
+            $table->string('model_code', 10);
             $table->decimal('mrp', 15, 0);
             $table->decimal('commission', 15, 0);
             $table->enum('status', ['active', 'inactive']);

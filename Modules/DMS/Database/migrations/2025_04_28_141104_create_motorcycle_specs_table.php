@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('motorcycle_specs', function (Blueprint $table) {
             $table->id();
-            $table->string('model_code', 100);
-            $table->string('model_make_of_vehicle', 100);
-            $table->string('class_of_vehicle', 100);
+            $table->string('model_code', 10);
+            $table->string('model_make_of_vehicle', 10);
+            $table->string('class_of_vehicle', 10);
             $table->string('no_of_cylinder_with_cc', 50);
             $table->string('size_of_tyre', 50);
             $table->string('horse_power', 10);
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('wheel_base', 15);
             $table->string('seating_capacity');
             $table->string('makers_name', 100);
-            $table->string('makers_country', 100);
+            $table->string('makers_country', 10);
             $table->string('cubic_capacity', 10);
             $table->string('no_of_cylinder', 10);
             $table->string('fuel_used', 50);

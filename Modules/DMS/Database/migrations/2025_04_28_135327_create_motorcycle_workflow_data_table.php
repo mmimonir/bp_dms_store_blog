@@ -15,17 +15,17 @@ return new class extends Migration
             $table->id(); // BIGINT Primary Key           
 
             // Other Fields
-            $table->string('ckd_process', 255)->default('PENDING');
-            $table->string('approval_no', 100)->nullable();
-            $table->string('invoice_no', 100)->nullable();
+            $table->string('ckd_process', 10)->default('PENDING');
+            $table->string('approval_no', 10)->nullable();
+            $table->string('invoice_no', 10)->nullable();
             $table->decimal('purchase_price', 15, 0);
-            $table->string('whos_vat', 50)->nullable();
-            $table->string('vat_process', 255)->default('PENDING');
-            $table->string('register_no', 50)->nullable();
-            $table->string('page_no', 50)->nullable();
-            $table->string('vat_purchage_sl', 100)->nullable();
-            $table->string('vat_sale_sl', 100)->nullable();
-            $table->string('evl_invoice_no', 100)->nullable();
+            $table->string('whos_vat', 10)->nullable();
+            $table->string('vat_process', 10)->default('PENDING');
+            $table->string('register_no', 10)->nullable();
+            $table->string('page_no', 10)->nullable();
+            $table->string('vat_purchage_sl', 10)->nullable();
+            $table->string('vat_sale_sl', 10)->nullable();
+            $table->string('evl_invoice_no', 10)->nullable();
             $table->string('file_status', 50);
             $table->string('tr_month_code', 10)->nullable();
             $table->string('tr_number', 50)->nullable();
