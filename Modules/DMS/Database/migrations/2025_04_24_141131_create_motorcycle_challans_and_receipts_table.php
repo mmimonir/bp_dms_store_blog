@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('motorcycle_challans_and_receipts', function (Blueprint $table) {
             $table->id();
-            $table->enum('document_type', ['challan', 'receipt']);
-            $table->string('document_no', 100);
-            $table->date('date');
+            $table->enum('document_type', ['challan', 'receipt', 'extra_challan', 'extra_receipt'])->nullable();
+            $table->string('document_no', 100)->nullable();
+            $table->date('date')->nullable();
             $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
             $table->foreignId('edited_by')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();
